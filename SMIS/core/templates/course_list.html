@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Your Courses</h2>
+<ul>
+  {% for course in object_list %}
+    <li>
+      {{ course.code }} - {{ course.title }}
+      <a href="{% url 'create_assessment' course.id %}">Add Assessment</a>
+      <a href="{% url 'view_marks' course.id %}">View Marks</a>
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}
