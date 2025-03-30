@@ -89,3 +89,14 @@ class Department(models.Model):
     dno = models.CharField(max_length=10)
     name = models.CharField(max_length=100)
     hod = models.ForeignKey(Staff, on_delete=models.SET_NULL, null=True, related_name='managed_department')
+
+class TeacherAssignment(models.Model):
+    teacher = models.ForeignKey(Staff, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    section = models.ForeignKey(Class, on_delete=models.CASCADE)
+
+class Transcript(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    generated_by = models.ForeignKey(Staff, on_delete=models.SET_NULL, null=True)
+    generation_date = models.DateField(auto_now_add=True)
+
